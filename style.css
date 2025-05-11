@@ -1,0 +1,400 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* メインカラー */
+  --primary-color: #de5851;      /* アクセントカラー（赤）はそのまま */
+  --secondary-color: #1e40af;    /* 濃い青 */
+  
+  /* 背景色 */
+  --bg-color: #2a2a2a;          /* ダークグレー（グラデーションの開始色に近い） */
+  --card-bg: #333333;           /* カード背景色（やや明るめ） */
+  
+  /* テキストカラー */
+  --text-color: #ffffff;        /* 白（ダークテーマ用） */
+  --text-secondary: #b3b3b3;    /* 薄いグレー（サブテキスト用） */
+  
+  /* アクセントカラー */
+  --accent-color: #de5851;      /* メインカラーと同じ */
+  --accent-hover: #ff6b63;      /* ホバー時の明るい赤 */
+  
+  /* その他 */
+  --border-color: #404040;      /* ボーダーカラー */
+  --shadow-color: rgba(0, 0, 0, 0.3);  /* 影の色 */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  background: #222;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: rgba(42, 42, 42, 0.95);  /* 半透明のダークグレー */
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 10px var(--shadow-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  padding: 0 2rem;
+  background: linear-gradient(135deg, 
+    rgba(66, 66, 66, 0.95) 0%,
+    rgba(0, 0, 0, 0.566) 100%
+  );
+  background-color: var(--bg-color);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.02);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  margin-left: 6rem;
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content p {
+  margin-left: 6rem;
+}
+
+.highlight {
+  color: #de5851;
+  font-weight: bold;
+}
+
+.typing-text {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.btn.secondary {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Sections */
+section {
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  scroll-margin-top: 6rem;
+}
+
+section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skill-card i {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+.project-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 1.5rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Contact Section */
+.contact-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(222, 88, 81, 0.2);
+}
+
+textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+/* Footer */
+footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 0;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+}
+
+/* 言語切り替えのアニメーション */
+#greeting-text {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+#greeting-text.fade {
+  opacity: 0;
+}
+
+/* 自己紹介文 */
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  max-width: 800px;
+  margin: 0 auto 0.3rem auto;
+  padding: 0.2rem 0;
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+#cursor {
+  display: inline-block;
+  color: #fff;
+  animation: blink 1s steps(1) infinite;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const typingText = document.getElementById('typing-text');
+  const cursor = document.getElementById('cursor');
+  const before = "Hello, I'm ";
+  const highlight = "2yum7";
+  const after = ".";
+  const fullText = before + highlight + after;
+  const highlightStart = before.length;
+  const highlightEnd = before.length + highlight.length;
+  let charIndex = 0;
+
+  function renderText(count) {
+    let html = '';
+    for (let i = 0; i < count; i++) {
+      if (i === highlightStart) html += `<span class="highlight">`;
+      html += fullText[i];
+      if (i === highlightEnd - 1 && i < count - 1) html += `</span>`;
+    }
+    // 2yum7の途中で止まった場合も閉じタグを補う
+    if (count > highlightStart && count <= highlightEnd) html += `</span>`;
+    typingText.innerHTML = html;
+  }
+
+  function typeText() {
+    if (charIndex < fullText.length) {
+      charIndex++;
+      renderText(charIndex);
+      setTimeout(typeText, 100);
+    } else {
+      cursor.style.display = 'none'; // 入力し終えたらカーソルを消す
+    }
+  }
+
+  // 初期化して開始
+  typingText.innerHTML = '';
+  cursor.style.display = 'inline-block';
+  typeText();
+});
+
+.about,
+.skills,
+.projects {
+  margin-bottom: 2rem; /* セクション間の余白を統一 */
+}
+
+.about h2 {
+    margin-top: 2rem;
+  }
