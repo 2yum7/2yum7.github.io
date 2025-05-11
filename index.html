@@ -33,6 +33,7 @@
         </h1>
         <p class="about-text">
           I'm a system engineer with 3 years of experience in SaaS and enterprise software development, particularly in the manufacturing industry. I specialize in bridging business needs and technical implementation—mainly using C#, Python, AWS, and SQL Server.
+        </p>
         <p class="about-text">
           I'm passionate about solving real-world problems through both code and collaboration, and I always aim to deliver systems that are not only functional but also meaningful to users.
         </p>
@@ -52,45 +53,5 @@
     </footer>
 
     <script src="main.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const typingText = document.getElementById('typing-text');
-        const cursor = document.getElementById('cursor');
-        const before = "Hello, I'm ";
-        const highlight = "2yum7";
-        const after = ".";
-        const fullText = before + highlight + after;
-        const highlightStart = before.length;
-        const highlightEnd = before.length + highlight.length;
-        let charIndex = 0;
-
-        function renderText(count) {
-          let html = '';
-          for (let i = 0; i < count; i++) {
-            if (i === highlightStart) html += `<span class="highlight">`;
-            html += fullText[i];
-            if (i === highlightEnd - 1 && i < count - 1) html += `</span>`;
-          }
-          // 2yum7の途中で止まった場合も閉じタグを補う
-          if (count > highlightStart && count <= highlightEnd) html += `</span>`;
-          typingText.innerHTML = html;
-        }
-
-        function typeText() {
-          if (charIndex < fullText.length) {
-            charIndex++;
-            renderText(charIndex);
-            setTimeout(typeText, 100);
-          } else {
-            cursor.style.display = 'none'; // 入力し終えたらカーソルを消す
-          }
-        }
-
-        // 初期化して開始
-        typingText.innerHTML = '';
-        cursor.style.display = 'inline-block';
-        typeText();
-      });
-    </script>
   </body>
 </html>

@@ -293,18 +293,67 @@ footer {
 @media (max-width: 768px) {
   .nav-links {
     display: none;
+    position: absolute;
+    top: 60px; /* ナビバーの高さに合わせて調整 */
+    right: 0;
+    background: rgba(42, 42, 42, 0.98);
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 999;
   }
-
-  .hamburger {
+  .nav-links.active {
     display: flex;
   }
-
-  .hero-content h1 {
-    font-size: 2.5rem;
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #333;
   }
-
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 2rem;
+    top: 1.2rem;
+    z-index: 1001;
+  }
+  .hero {
+    padding: 7rem 1rem 2rem 1rem;
+    min-height: 70vh;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-left: 0;
+  }
+  .hero-content p {
+    margin-left: 0;
+    font-size: 1rem;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .skill-card {
+    padding: 1.2rem;
+    font-size: 1rem;
+  }
+  section {
+    padding-top: 5rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
   .cta-buttons {
     flex-direction: column;
+  }
+  footer {
+    padding: 1rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  .social-links {
+    gap: 1rem;
   }
 }
 
@@ -349,45 +398,6 @@ footer {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const typingText = document.getElementById('typing-text');
-  const cursor = document.getElementById('cursor');
-  const before = "Hello, I'm ";
-  const highlight = "2yum7";
-  const after = ".";
-  const fullText = before + highlight + after;
-  const highlightStart = before.length;
-  const highlightEnd = before.length + highlight.length;
-  let charIndex = 0;
-
-  function renderText(count) {
-    let html = '';
-    for (let i = 0; i < count; i++) {
-      if (i === highlightStart) html += `<span class="highlight">`;
-      html += fullText[i];
-      if (i === highlightEnd - 1 && i < count - 1) html += `</span>`;
-    }
-    // 2yum7の途中で止まった場合も閉じタグを補う
-    if (count > highlightStart && count <= highlightEnd) html += `</span>`;
-    typingText.innerHTML = html;
-  }
-
-  function typeText() {
-    if (charIndex < fullText.length) {
-      charIndex++;
-      renderText(charIndex);
-      setTimeout(typeText, 100);
-    } else {
-      cursor.style.display = 'none'; // 入力し終えたらカーソルを消す
-    }
-  }
-
-  // 初期化して開始
-  typingText.innerHTML = '';
-  cursor.style.display = 'inline-block';
-  typeText();
-});
 
 .about,
 .skills,
